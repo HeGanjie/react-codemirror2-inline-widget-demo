@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useRef} from 'react';
 import './App.css';
+import FormulaEditor from "./formula-editor";
 
 function App() {
+  let [editorText, onEditorTextChange] = useState('');
+  let editor = useRef(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FormulaEditor
+        ref={editor}
+        value={editorText}
+        onChange={val => onEditorTextChange(val)}
+        className="my-formula-editor border"
+        inlineWidgetOpts={{
+          useObject: {
+            regex: /useObject\("[^)]+"\)/,
+            render: (objId) => {
+              return (
+                <div
+                  className="border iblock"
+                  style={{padding: '5px'}}
+                  onClick={() => alert(objId)}
+                >{objId}</div>
+              )
+            }
+          }
+        }}
+      />
+      <button
+        style={{marginTop: '10px'}}
+        onClick={() => {
+          editor.current.insertText('useObject("xxx")')
+        }}
+      >Add Term</button>
     </div>
   );
 }
