@@ -7,3 +7,5 @@ In the project directory, you can run:
 
 ### `npm start`
 
+## Preview
+![demo image](https://github.com/HeGanjie/react-codemirror2-inline-widget-demo/blob/master/demoImg.png?raw=true)
