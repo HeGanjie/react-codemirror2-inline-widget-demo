@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "codemirror": "^5.47.0",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.19",
     "react-codemirror2": "^6.0.0"
   }
 }
